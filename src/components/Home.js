@@ -30,6 +30,8 @@ class Home extends React.Component{
         <p>status: {this.state.status}</p>
         <hr / >
         <button onClick={()=>this.onMakeOlder()} className='btn btn-primary'>make me older!</button>
+        <hr/>
+        <button onClick={this.props.greet} className="btn btn-primary">Greet</button>
       </div>
 
     );
