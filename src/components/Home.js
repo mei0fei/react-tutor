@@ -1,19 +1,35 @@
 import React from 'react';
 
 class Home extends React.Component{
+  //pros: read Only
+  //state: read and write
+  constructor(props){
+    super();
+    this.state = {
+      age: props.age,
+      status: 0
+    }
+    setTimeout(()=>{
+      this.setState({
+        status:  1
+      })
+    }, 3000);
+  }
+
+  onMakeOlder(){
+    this.setState({
+        age: this.state.age + 3
+    });
+  }
+
   render(){
-    console.log(this.props);
     return (
       <div>
         <p>in a new component!</p>
-        <p>your name is {this.props.name}, your age is {this.props.age}</p>
-        <p>user object => name: {this.props.user.name}</p>
-        <p>hobbies</p>
-        <ul>
-          {this.props.user.hobbies.map((hobby,i)=><li key={i}>{hobby}</li>)}
-        </ul>
+        <p>your name is {this.props.name}, your age is {this.state.age}</p>
+        <p>status: {this.state.status}</p>
         <hr / >
-        {this.props.children}
+        <button onClick={()=>this.onMakeOlder()} className='btn btn-primary'>make me older!</button>
       </div>
 
     );
